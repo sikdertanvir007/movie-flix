@@ -36,6 +36,7 @@ children : [
 {
 path : "/movie-details/:id",
 element : <MovieDetails></MovieDetails>,
+loader : ()=> fetch("/movies.json"),
 },
 {
 path : "/*",
