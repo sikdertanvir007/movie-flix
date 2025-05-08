@@ -7,12 +7,14 @@ import Register from "./pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
 import PrivateRoute from "../provider/PrivateRoute";
 import Loading from "./pages/Loading";
+import ErrorPage from "./pages/ErrorPage";
 
 
 const router = createBrowserRouter([
 {
 path : "/",
 element : <HomeLayout></HomeLayout>,
+
 children : [
     {
         path : "/",
@@ -48,7 +50,7 @@ hydrateFallbackElement : <Loading></Loading>,
 },
 {
 path : "/*",
-element : <h2>Error404</h2>
+element : <ErrorPage></ErrorPage>,
 },
 
 ]);
