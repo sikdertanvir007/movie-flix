@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
+import { FaUserXmark } from "react-icons/fa6";
 
 const Navbar = () => {
   const {user, logOut} =use(AuthContext);
@@ -45,12 +46,20 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="navbar-end">
-          {
-            user ? (<Link to="/" onClick={handleLogOut} className='btn btn-primary btn-outline'>LogOut</Link>) : ( <Link to="/auth/login" className="btn btn-primary btn-outline">Login</Link>)
-          }
-         
-        </div>
+        <div className="navbar-end space-x-4 items-center flex">
+  {user ? (
+    <img src={user.photoURL} alt="User" className="w-10 h-10 rounded-full" />
+  ) : (
+    <FaUserXmark size={32} />
+  )}
+
+  {user ? (
+    <Link to="/" onClick={handleLogOut} className="btn btn-primary btn-outline">LogOut</Link>
+  ) : (
+    <Link to="/auth/login" className="btn btn-primary btn-outline">Login</Link>
+  )}
+</div>
+
       </div>
     </div>
   );

@@ -46,7 +46,7 @@ useEffect(()=> {
         signIn,
         loading,
         setLoading,
-        updateUser
+        updateUser,
     }
     return <AuthContext value={authData}>{children}</AuthContext>;
 };
