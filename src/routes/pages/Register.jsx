@@ -1,15 +1,22 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = () => {
     const {createUser,setUser} = use(AuthContext);
+    const [nameError,setNameError] = useState(" ");
     const handleRegister = (e) => {
         e.preventDefault();
         console.log(e.target);
         const form = e.target;
         const name = form.name.value;
+        if(name.length < 5){
+            setNameError("Name should be more than 5 character")
+            return;
+        } else{
+            setNameError(" ")
+        }
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
@@ -37,6 +44,7 @@ const Register = () => {
             {/* Name */}
           <label className="label">Name</label>
           <input name='name' type="text" className="input" placeholder="Your Name" required />
+          {nameError && <p className='text-xs text-error'>{nameError}</p>}
           {/* Photo URL */}
           <label className="label">Photo URL</label>
           <input name='photo' type="text" className="input" placeholder="Photo URL" required />
@@ -52,7 +60,7 @@ const Register = () => {
           <p className='font-semibold text-center pt-2'>Already Have An Account ? <Link className='text-secondary' to="/auth/login">Login</Link></p>
           
         </fieldset>
-        <div><button className='btn btn-outline btn-secondary w-full'> <FcGoogle size={20} />Login With Google </button></div>
+        <div><button className='btn btn-outline btn-secondary w-full'> <FcGoogle size={20} />LogIn With Google </button></div>
       </form>
     </div>
         </div>

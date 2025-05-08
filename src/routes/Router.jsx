@@ -5,6 +5,7 @@ import MovieDetails from "./pages/MovieDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
+import PrivateRoute from "../provider/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -35,7 +36,11 @@ children : [
 },
 {
 path : "/movie-details/:id",
-element : <MovieDetails></MovieDetails>,
+element : (
+    <PrivateRoute>
+        <MovieDetails></MovieDetails>
+    </PrivateRoute>
+),
 loader : ()=> fetch("/movies.json"),
 },
 {

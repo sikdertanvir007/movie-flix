@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { FaImdb } from "react-icons/fa6";
+import { Link } from 'react-router';
+import { FaArrowLeft } from "react-icons/fa6";
 
 const MovieDetailsCard = ({ movie }) => {
   const {
     name,
     thumbnail,
-    
+    id,
     tech_category,
     frequency,
     price,
@@ -124,7 +126,7 @@ const MovieDetailsCard = ({ movie }) => {
             </ul>
           </div>
         )}
-
+<Link className='btn btn-secondary' to="/"><FaArrowLeft /> Back to Subscription Box</Link>
       </div>
     </div>
   );
